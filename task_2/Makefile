@@ -4,9 +4,10 @@ endif
 
 CC = g++
 CPPFLAGS += -isystem $(GTEST_DIR)/include
-CCFLAGS += -g -std=gnu++17 -Wall -Wextra -pthread
+CCFLAGS += -g -std=gnu++17 -Wall -pthread
 
 TESTS = fibSum_gTest
+MAIN = main
 SOURCE_DIR = project
 TEST_DIR = test
 
@@ -14,7 +15,13 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h $(GTEST_DIR)/include/gtest/intern
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
 
-all : $(TESTS)
+all : $(MAIN) $(TESTS)
+
+main : fibSum.o main.o
+	$(CC) fibSum.o main.o -o $(MAIN)
+
+main.o : $(SOURCE_DIR)/main.cpp
+	$(CC) $(CPPFLAGS) $(CCFLAGS) -c $(SOURCE_DIR)/main.cpp
 
 clean :
 	rm -fr $(TESTS) *.a *.o
