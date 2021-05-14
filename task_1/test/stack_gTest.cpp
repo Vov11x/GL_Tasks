@@ -12,14 +12,6 @@ TEST(stack, constructors) {
     EXPECT_EQ(st2.size(), 5);
 }
 
-TEST(stack, create) {
-    stack<int> st;
-    st.create(5);
-
-    EXPECT_EQ(st.capacity(), 0);
-    EXPECT_EQ(st.size(), 5);
-}
-
 TEST(stack, push_1) {
     stack<int> st;
     EXPECT_THROW(st.push(5), std::out_of_range);

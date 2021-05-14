@@ -1,5 +1,7 @@
-#include <vector>
+#ifndef STACK_H_
+#define STACK_H_
 
+#include <vector>
 
 template <typename T>
 class stack {
@@ -15,3 +17,5 @@ public:
 private:
     std::vector<T> m_data;
 };
+
+#endif
